@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stimulus Web Engagement Bot - Phase 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <h2>Stimulus Assistant</h2>
+            <p>Your Business Consulting Guide</p>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+                Welcome! I'm here to help you learn about Stimulus. Try asking me questions like:
+                <br><br>
+                • "What is Stimulus?"<br>
+                • "How do I register?"<br>
+                • "What services do you offer?"
+            </div>
+        </div>
+        
+        <!-- Typing indicator -->
+        <div class="typing-indicator" id="typingIndicator" style="display: none;">
+            <div class="message bot">
+                <div class="message-bubble typing">
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    Bot is typing...
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick reply buttons container -->
+        <div class="quick-replies" id="quickReplies" style="display: none;"></div>
+        
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message..." autocomplete="off">
+            <button class="send-button" id="sendButton">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<link rel="stylesheet" href="styles.css">
