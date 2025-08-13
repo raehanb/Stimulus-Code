@@ -2,7 +2,7 @@
 const chatbotData = {
     // Basic information responses
     about: {
-        keywords: ['what', 'about', 'stimulus', 'company', 'business', 'who', 'describe', 'explain'],
+        keywords: ['what', 'about', 'stimulus', 'company', 'business', 'who', 'tell me', 'describe', 'explain'],
         response: "Stimulus is a forward-thinking consulting startup founded in 2025, helping businesses grow and hire smarter. We're led by industry expert Ms. Anusha K and specialize in Business Consulting, Job Recruitment, and Business Advisory services. <a href='https://stimulus.org.in' target='_blank'>Visit our website</a> to learn more!",
         quickReplies: ['Tell me about services', 'Contact information']
     },
@@ -18,13 +18,13 @@ const chatbotData = {
     contact: {
         keywords: ['contact', 'email', 'phone', 'reach', 'call', 'write', 'address', 'touch', 'communicate', 'talk', 'speak', 'number', 'mail'],
         response: "You can reach us through: <br>📧 Email: <a href='mailto:founder@stimulus.org.in'>founder@stimulus.org.in</a><br>🌐 Website: <a href='https://stimulus.org.in' target='_blank'>https://stimulus.org.in</a><br><br>We're always ready to help with your business consulting needs!",
-        quickReplies: ['Ask about services', 'Registration']
+        quickReplies: ['Our services', 'About Stimulus']
     },
     
     registration: {
         keywords: ['register', 'signup', 'sign up', 'join', 'enroll', 'apply', 'start', 'begin', 'get started', 'onboard'],
         response: "To get started with Stimulus, <a href='https://stimulus.org.in' target='_blank'>visit our registration page</a> on our website. You can also contact us directly at <a href='mailto:founder@stimulus.org.in'>founder@stimulus.org.in</a> for personalized assistance with the registration process.",
-        quickReplies: ['Contact info', 'Services offered']
+        quickReplies: ['Contact us', 'Our services']
     },
     
 
@@ -33,6 +33,18 @@ const chatbotData = {
         keywords: ['founder', 'anusha', 'leader', 'ceo', 'owner', 'who runs', 'boss', 'head', 'manager', 'director'],
         response: "Stimulus is led by <strong>Ms. Anusha K</strong>, an industry expert with extensive experience in business consulting, recruitment, and advisory services. Her expertise drives our mission to help businesses grow and hire smarter.",
         quickReplies: ['About Stimulus', 'Our services', 'Contact us']
+    },
+
+    pricing: {
+        keywords: ['price', 'pricing', 'cost', 'costs', 'fee', 'fees', 'rate', 'rates', 'charge', 'charges', 'budget', 'expensive', 'affordable', 'money'],
+        response: "Our pricing is customized based on your specific business needs and project scope. We offer competitive rates and flexible payment options to ensure our services are accessible to businesses of all sizes. Contact us for a personalized quote!",
+        quickReplies: ['Contact us', 'Our services', 'About Stimulus']
+    },
+
+    help: {
+        keywords: ['help', 'assist', 'support', 'solve', 'fix', 'problem', 'issue', 'challenge', 'need', 'require'],
+        response: "We're here to help your business succeed! Whether you need strategic consulting, talent recruitment, or business advisory services, our expert team can provide tailored solutions to address your specific challenges and goals.",
+        quickReplies: ['Our services', 'Contact us', 'Pricing info']
     }
 };
 
@@ -140,7 +152,7 @@ function findBestMatch(userMessage) {
                 if (matchScore > 0 && matchScore >= keyWords.length * 0.7) {
                     return {
                         response: response,
-                        quickReplies: ['Main menu', 'Contact us'],
+                        quickReplies: ['Contact us', 'Our services'],
                         clearContext: true
                     };
                 }
@@ -162,7 +174,7 @@ function findBestMatch(userMessage) {
         // Calculate match score based on keywords
         data.keywords.forEach(keyword => {
             if (normalizedMessage.includes(keyword)) {
-                score += keyword.length; // The longer a keyword is, the higher the score
+                score += keyword.length; // Longer keywords get higher scores
             }
         });
         
@@ -175,7 +187,7 @@ function findBestMatch(userMessage) {
     return bestMatch;
 }
 
-// Function to get Stimulus bot response
+// Function to get bot response
 function getBotResponse(userMessage) {
     const match = findBestMatch(userMessage);
     
@@ -203,8 +215,8 @@ function getBotResponse(userMessage) {
     // Default response for unmatched queries
     chatState.context = null;
     return {
-        message: "I'm sorry, I don't understand that question. Try asking me about our services, pricing, consultation process, or how we can help your business grow. You can also <a href='https://stimulus.org.in' target='_blank'>visit our website</a> for more information.",
-        quickReplies: ['Our services', 'Pricing info', 'Schedule consultation', 'Contact us']
+        message: "I'm sorry, I don't understand that question. Try asking me about our services, contact information, registration, or company details. You can also <a href='https://stimulus.org.in' target='_blank'>visit our website</a> for more information.",
+        quickReplies: ['Our services', 'Contact us', 'Pricing info']
     };
 }
 
@@ -212,6 +224,7 @@ function getBotResponse(userMessage) {
 function handleUserInput() {
     const message = userInput.value.trim();
     
+    // Check if message is not empty
     if (message === '') {
         return;
     }
@@ -219,8 +232,10 @@ function handleUserInput() {
     // Hide quick replies when user types
     quickReplies.style.display = 'none';
     
+    // Add user message to chat
     addMessage(message, true);
     
+    // Clear input field
     userInput.value = '';
     
     // Show typing indicator
@@ -256,7 +271,6 @@ window.addEventListener('load', function() {
     
     // Show initial quick replies after a short delay
     setTimeout(() => {
-        showQuickReplies(['What is Stimulus?', 'Our services', 'Pricing info', 'Schedule consultation']);
+        showQuickReplies(['What is Stimulus?', 'Our services', 'Contact us', 'Pricing info']);
     }, 2000);
-
 });
