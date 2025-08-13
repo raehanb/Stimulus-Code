@@ -2,7 +2,7 @@
 const chatbotData = {
     // Basic information responses
     about: {
-        keywords: ['what', 'about', 'stimulus', 'company', 'business', 'who', 'describe', 'explain', 'info', 'information'],
+        keywords: ['what', 'about', 'stimulus', 'company', 'business', 'who', 'describe', 'explain'],
         response: "Stimulus is a forward-thinking consulting startup founded in 2025, helping businesses grow and hire smarter. We're led by industry expert Ms. Anusha K and specialize in Business Consulting, Job Recruitment, and Business Advisory services. <a href='https://stimulus.org.in' target='_blank'>Visit our website</a> to learn more!",
         quickReplies: ['Tell me about services', 'Contact information']
     },
@@ -258,4 +258,5 @@ window.addEventListener('load', function() {
     setTimeout(() => {
         showQuickReplies(['What is Stimulus?', 'Our services', 'Pricing info', 'Schedule consultation']);
     }, 2000);
+
 });
