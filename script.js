@@ -22,7 +22,7 @@ const chatbotData = {
     },
     
     registration: {
-        keywords: ['register', 'signup', 'sign up', 'join', 'enroll', 'apply', 'start', 'begin', 'get started', 'onboard'],
+        keywords: ['register', 'signup', 'sign up', 'join', 'enroll', 'apply', 'start', 'begin', 'get started', 'onboard', 'registration'],
         response: "To get started with Stimulus, <a href='https://stimulus.org.in' target='_blank'>visit our registration page</a> on our website. You can also contact us directly at <a href='mailto:founder@stimulus.org.in'>founder@stimulus.org.in</a> for personalized assistance with the registration process.",
         quickReplies: ['Contact us', 'Our services']
     },
@@ -274,3 +274,4 @@ window.addEventListener('load', function() {
         showQuickReplies(['What is Stimulus?', 'Our services', 'Contact us', 'Pricing info']);
     }, 2000);
 });
+
